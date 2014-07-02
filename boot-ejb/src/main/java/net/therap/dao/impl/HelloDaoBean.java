@@ -1,10 +1,9 @@
-package net.therap.service.impl;
+package net.therap.dao.impl;
 
+import net.therap.dao.HelloDao;
 import net.therap.domain.User;
-import net.therap.service.Hello;
 
 import javax.ejb.AsyncResult;
-import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,23 +11,22 @@ import java.util.concurrent.Future;
 
 /**
  * @author rifatul.islam
- * @since 6/30/14.
+ * @since 7/2/14.
  */
-@Stateless(name = "HelloEJB")
-public class HelloBean implements Hello {
+@Stateless(name = "HelloDaoEJB")
+public class HelloDaoBean implements HelloDao {
 
     @PersistenceContext(unitName = "persistDB")
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
-    public HelloBean() {
+    public HelloDaoBean() {
     }
-
 
     public String sayHello() {
         return "Hello JEE 6 ";
     }
 
-    @Asynchronous
+
     public Future<String> asynchTask() {
         System.out.println("Asynchronous Task Begin");
         try {
@@ -46,6 +44,4 @@ public class HelloBean implements Hello {
     public User testQuery() {
         return entityManager.find(User.class, 1);
     }
-
-
 }

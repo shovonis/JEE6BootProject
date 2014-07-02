@@ -11,7 +11,7 @@ import java.util.concurrent.Future;
  */
 
 @Local
-public interface Hello {
+public interface HelloService {
     public String sayHello();
 
     public Future<String> asynchTask();

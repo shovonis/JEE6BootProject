@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
-<persistence-unit name="persistDB" transaction-type="JTA">
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
 
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <persistence-unit name="persistDB" transaction-type="JTA">
 
-    <jta-data-source>jdbc/mydb</jta-data-source>
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-    <class>net.therap.domain.User</class>
+        <jta-data-source>jdbc/mydb</jta-data-source>
 
-    <properties>
-        <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-        <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-         <property name="hibernate.show-sql"  value="true"/>
-    </properties>
-</persistence-unit>
+        <class>net.therap.domain.User</class>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show-sql" value="true"/>
+        </properties>
+    </persistence-unit>
+
 </persistence>

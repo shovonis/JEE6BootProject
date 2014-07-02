@@ -1,7 +1,8 @@
 package net.therap.controller;
 
 import net.therap.domain.User;
-import net.therap.service.Hello;
+import net.therap.service.HelloService;
+import net.therap.service.impl.TestBean;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -19,11 +20,15 @@ import java.io.IOException;
 @WebServlet(name = "HelloServlet", urlPatterns = "/hello")
 public class HelloServlet extends HttpServlet {
     @EJB(name = "HelloEJB")
-    private Hello helloBean;
+    private HelloService helloService;
+
+    @EJB
+    private TestBean testBean;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("hello", helloBean.sayHello());
-        User user = helloBean.testQuery();
+        request.setAttribute("hello", helloService.sayHello());
+        User user = helloService.testQuery();
+        testBean.doTask();
         request.setAttribute("user", user);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
