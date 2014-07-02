@@ -1,0 +1,7 @@
+apply plugin: 'ear'
+
+description = ''
+dependencies {
+  compile project(':boot-ejb')
+  compile project(':boot-web')
+}

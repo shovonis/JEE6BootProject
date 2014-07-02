@@ -1,0 +1,8 @@
+rootProject.name = 'JEEBootApplication'
+include ':boot-ejb'
+include ':boot-web'
+include ':boot-app'
+
+project(':boot-ejb').projectDir = "$rootDir/boot-ejb" as File
+project(':boot-web').projectDir = "$rootDir/boot-web" as File
+project(':boot-app').projectDir = "$rootDir/boot-app" as File

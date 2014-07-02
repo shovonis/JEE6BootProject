@@ -1,0 +1,17 @@
+
+apply plugin: 'war'
+
+jar.enabled = true
+
+description = ''
+dependencies {
+    compile group: 'junit', name: 'junit', version:'4.11'
+    compile group: 'javax', name: 'javaee-web-api', version:'6.0'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.0.1'
+    compile group: 'org.glassfish.main.ejb', name: 'javax.ejb', version:'3.1.2.2'
+    compile group: 'javax.faces', name: 'javax.faces-api', version:'2.1'
+    compile group: 'mysql', name: 'mysql-connector-java', version:'5.1.30'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version:'4.2.4.Final'
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version:'1.0.0.Final'
+    providedCompile project(':boot-ejb')
+}
