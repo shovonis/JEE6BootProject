@@ -65,6 +65,17 @@
             <artifactId>hibernate-jpa-2.0-api</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>sitemesh</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
