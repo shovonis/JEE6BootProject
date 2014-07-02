@@ -2,6 +2,6 @@ apply plugin: 'ear'
 
 description = ''
 dependencies {
-  compile project(':boot-ejb')
-  compile project(':boot-web')
+    deploy project(path: ':boot-web', configuration: 'archives')
+    deploy project(path: ':boot-ejb', configuration: 'archives')
 }
