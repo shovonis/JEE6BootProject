@@ -1,6 +1,7 @@
 package net.therap.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 /**
  * @author rifatul.islam

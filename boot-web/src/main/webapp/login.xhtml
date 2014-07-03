@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+    <ui:composition template="WEB-INF/template/template.xhtml">
+        <ui:define name="content">
+            <legend>Login Form</legend>
+            <h:form styleClass="basic-grey">
+
+                <h:outputLabel for="userName">User Name:</h:outputLabel>
+                <h:message style="text-decoration-color: red" for="userName" styleClass="error-message"/>
+                <h:panelGroup>
+                    <h:inputText id="userName" value="#{loginController.user.userName}" required="true"/>
+                    <span style="text-decoration-color: red" class="reruired">*</span>
+                </h:panelGroup>
+
+                <h:outputLabel for="password">Password</h:outputLabel>
+                <h:message style="text-decoration-color: red" for="password" styleClass="error-message"/>
+
+                <h:panelGroup>
+                    <h:inputSecret id="password" value="#{loginController.user.password}" required="true"/>
+                    <span style="text-decoration-color: red" class="reruired">*</span>
+                </h:panelGroup>
+                <br/>
+                <h:commandButton styleClass="button" action="#{loginController.loginCheck}" value="Login"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+
+</html>
