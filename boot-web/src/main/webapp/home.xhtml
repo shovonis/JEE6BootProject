@@ -5,19 +5,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:comp="http://java.sun.com/jsf/composite/comp">
+<h:head>
+</h:head>
 
 <h:body>
-    <h:form>
+    <ui:composition>
+        <ui:define name="leftPanel">
+            This is a Dummy LeftPanel
+        </ui:define>
         <h:outputLabel value="this is home"/>
         <h:form>
             <h:commandLink action="#{helloBean.showPage}" value="Index">
                 <f:param name="pageId" value="1"/>
             </h:commandLink>
+            <p:calendar id="date" value="#{helloBean.date}" showOn="button"></p:calendar>
+            <p:editor id="editor" widgetVar="editorWidget" value="#{helloBean.text}" width="600"/>
 
-            <p:calendar value="#{helloBean.date}"></p:calendar>
+            <h:panelGrid columns="2" style="margin-top: 10px">
+                <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk"/>
+                <p:commandButton value="Clear" type="button" onclick="PF('editorWidget').clear();"
+                                 icon="ui-icon-close"/>
+            </h:panelGrid>
+
+            <p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade">
+                <h:outputText id="display" value="#{helloBean.text}" escape="false"/>
+            </p:dialog>
+
         </h:form>
-    </h:form>
+
+        <comp:register nameLabel="USER NAME" nameValue="#{loginController.user.userName}"
+                       emailLabel="EMAIL" emailValue="example@yahoo.com" submitButton="Register"
+                       sumitButtonAction="#{loginController.loginCheck}"/>
+
+    </ui:composition>
 </h:body>
 
 </html>

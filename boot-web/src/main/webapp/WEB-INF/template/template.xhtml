@@ -3,7 +3,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
@@ -19,6 +20,17 @@
 <h:body>
     <div id="wrapper">
         This is From Template
+        <div id="navigation">
+            <ui:insert name="navigation">This is For navigation</ui:insert>
+        </div>
+
+        <div id="leftPanel">
+            <ui:insert name="leftPanel">This is for left panels</ui:insert>
+        </div>
+
+        <div id="rightPanel">
+            <ui:insert name="rightPanel">This is for right panel</ui:insert>
+        </div>
 
         <div id="content">
             <ui:insert name="content">
@@ -26,6 +38,9 @@
             </ui:insert>
         </div>
 
+        <div id="footer">
+            <ui:insert name="footer">This is footer</ui:insert>
+        </div>
     </div>
 </h:body>
 

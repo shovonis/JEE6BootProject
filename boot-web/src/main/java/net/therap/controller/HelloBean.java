@@ -20,7 +20,9 @@ public class HelloBean implements Serializable {
     @ManagedProperty(value = "#{param.pageId}")
     private String pageId;
 
-    private Date date = new Date();
+    private Date date;
+
+    private String text;
 
     public String getMessage() {
         return message;
@@ -55,5 +57,13 @@ public class HelloBean implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

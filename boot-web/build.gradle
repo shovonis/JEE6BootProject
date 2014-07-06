@@ -26,6 +26,8 @@ dependencies {
     compile 'com.sun.faces:jsf-impl:2.1.19'
 
     compile "org.primefaces:primefaces:4.0"
+    compile 'org.primefaces.extensions:primefaces-extensions:2.0.0'
+
     compile "org.primefaces.themes:cruze:1.0.8"
 
     runtime 'javax.servlet:jstl:1.2'
