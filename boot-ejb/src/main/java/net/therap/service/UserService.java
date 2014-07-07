@@ -1,5 +1,4 @@
-package net.therap.dao;
-
+package net.therap.service;
 
 import net.therap.domain.User;
 
@@ -7,14 +6,12 @@ import javax.ejb.Local;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * @author : rifatul.islam
- * Date: 5/20/14
- * Time: 12:01 PM
+ * @author rifatul.islam
+ * @since 7/7/14.
  */
 
 @Local
-public interface UserDao {
+public interface UserService {
     public User getUser(String userName, String password);
 
     public List<User> getAllUser();

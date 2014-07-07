@@ -2,10 +2,12 @@ package net.therap.controller;
 
 import net.therap.dao.UserDao;
 import net.therap.domain.User;
+import net.therap.service.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  * @author rifatul.islam
@@ -13,12 +15,13 @@ import javax.faces.bean.ManagedBean;
  */
 
 @ManagedBean(name = "loginController")
+@SessionScoped
 public class LoginController {
 
     private User user;
 
     @EJB
-    private UserDao userDao;
+    private UserService userService;
 
     @PostConstruct
     public void setUp() {
@@ -26,7 +29,7 @@ public class LoginController {
     }
 
     public String loginCheck() {
-        user = userDao.getUser(user.getUserName(), user.getPassword());
+        user = userService.getUser(user.getUserName(), user.getPassword());
         if (user == null) {
             return "login.xhtml?faces-redirect=true";
         }
@@ -39,5 +42,9 @@ public class LoginController {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isUserLoggedIn() {
+        return user != null;
     }
 }

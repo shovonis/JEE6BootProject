@@ -4,6 +4,7 @@ package net.therap.dao.impl;
 import net.therap.dao.UserDao;
 import net.therap.domain.User;
 
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -12,6 +13,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless(name = "userDaoImpl")
+@Local(UserDao.class)
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext(unitName = "persistDB")
@@ -31,6 +33,7 @@ public class UserDaoImpl implements UserDao {
         } catch (NoResultException exception) {
             System.err.println("Error ");
         }
+
         return user;
     }
 
