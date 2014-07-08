@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+        >
+
+
+<h:head>
+
+</h:head>
+
+<composite:interface>
+    <composite:attribute name="userNameLabel"/>
+    <composite:attribute name="userNameValue"/>
+    <composite:attribute name="passwordLabel"/>
+    <composite:attribute name="passwordValue"/>
+
+    <composite:attribute name="dobLabel"/>
+    <composite:attribute name="dob"/>
+
+    <composite:attribute name="submitButton"/>
+    <composite:attribute name="sumitButtonAction" method-signature="java.lang.String action()"/>
+</composite:interface>
+
+<composite:implementation>
+    <h:form>
+        <p:message for="regPanle" style="color: red"/>
+
+        <h:panelGrid id="regPanle">
+
+            <p:outputLabel value="#{cc.attrs.userNameLabel}"/>
+            <p:inputText value="#{cc.attrs.userNameValue}" id="name"/>
+
+            <p:outputLabel value="#{cc.attrs.passwordLabel}"/>
+            <p:password value="#{cc.attrs.passwordValue}"/>
+
+            <p:outputLabel value="#{cc.attrs.dobLabel}"/>
+            <p:calendar value="#{cc.attrs.dob}" showOn="button"/>
+
+        </h:panelGrid>
+
+        <p:commandButton action="#{cc.attrs.sumitButtonAction}" value="#{cc.attrs.submitButton}"/>
+
+    </h:form>
+</composite:implementation>
+</html>

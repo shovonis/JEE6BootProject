@@ -1,7 +1,7 @@
 package net.therap.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
+import java.util.Date;
 
 /**
  * @author rifatul.islam
@@ -24,6 +24,10 @@ public class User {
 
     @Column(name = "user_name")
     private String userName;
+
+    @Column(name = "dob")
+    private Date dob;
+
 
     public int getUserId() {
         return userId;
@@ -55,5 +59,13 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date date) {
+        this.dob = date;
     }
 }

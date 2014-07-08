@@ -15,7 +15,7 @@
                 <h:outputLabel for="userName">User Name:</h:outputLabel>
                 <h:message style="text-decoration-color: red" for="userName" styleClass="error-message"/>
                 <h:panelGroup>
-                    <h:inputText id="userName" value="#{authController.user.userName}" required="true"/>
+                    <h:inputText id="userName" value="#{userController.user.userName}" required="true"/>
                     <span style="text-decoration-color: red" class="reruired">*</span>
                 </h:panelGroup>
 
@@ -23,11 +23,11 @@
                 <h:message style="text-decoration-color: red" for="password" styleClass="error-message"/>
 
                 <h:panelGroup>
-                    <h:inputSecret id="password" value="#{authController.user.password}" required="true"/>
+                    <h:inputSecret id="password" value="#{userController.user.password}" required="true"/>
                     <span style="text-decoration-color: red" class="reruired">*</span>
                 </h:panelGroup>
                 <br/>
-                <h:commandButton styleClass="button" action="#{authController.login}" value="Login"/>
+                <h:commandButton styleClass="button" action="#{userController.login}" value="Login"/>
 
                 <li><h:link value="Register" outcome="register.xhtml?faces-redirect=true"/></li>
             </h:form>

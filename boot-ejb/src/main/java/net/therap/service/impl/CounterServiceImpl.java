@@ -6,10 +6,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.ejb.PostActivate;
-import javax.ejb.PrePassivate;
-import javax.ejb.Remove;
-import javax.ejb.Stateful;
+import javax.ejb.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author rifatul.islam
@@ -18,6 +16,7 @@ import javax.ejb.Stateful;
 
 
 @Stateful(name = "CounterEJB")
+@StatefulTimeout(unit = TimeUnit.SECONDS, value = 20)
 public class CounterServiceImpl implements CounterService {
     private static final Logger log = LoggerFactory.getLogger(CounterServiceImpl.class);
 

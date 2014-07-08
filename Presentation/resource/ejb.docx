@@ -1,0 +1,31 @@
+﻿
+Why Choose EJB Over Spring : 
+For your use case where the application runs on one server and the database runs on another, the choice between EJB and Spring is irrelevant. Every platforms supports this, be it a Java SE application, a simple Servlet container like Tomcat or Jetty, PHP, Ruby on Rails, or whatever.
+You don't need any kind of explicit remoting for that. You just define a datasource, provide the URL where your DB server lives and that's it.
+That said, both EJB and Spring Beans do make it easier to work with datasources. They both help you defining a datasource, injecting it in beans and managing transactions associated with them.
+Of the two, EJB (and Java EE in general) is more lightweight and adheres more to the convention over configuration principle. Spring requires more verbosity to get the same things and depends a lot on XML files which can quickly become very big and unwieldy. The flip side of the coin is that Spring can be less magical and you might feel more in control after having everything you want spelled out.
+Another issue is the way EJB and Spring are developed.
+EJB is free (as in free beer), open-source and non-proprietary. There are implementations of EJB being made by non profit organizations (Apache), open source companies (Redhat/JBoss) and deeply commercial closed source enterprises (IBM). I personally would avoid the latter, but to each his own.
+Spring on the other hand is free and open-source, but strongly proprietary. There is only one company making Spring and that's Springsource. If you don't agree with Rod, then tough luck for you. This is not necessarily a bad thing, but a difference you might want to be aware of.
+Doing everyting @Annotation is always good? configuration never needed?
+It's an endless debate really. Some argue that XML is hard to maintain, others argue that annotations pollute an otherwise pure POJO model.
+I think that annotating a bean as being an EJB stateless bean (@Stateless) or a JPA entity (@Entity) is more cleanly done using annotations. Same goes for the @EJB or @Inject dependency injections. On the other hand, I prefer JPQL named queries to be in XML files instead of annotations, and injections that represent pure configuration data (like a max value for something) to be in XML as well.
+In Java EE, every annotation can also be specified in XML. If both the annotation and the XML equivalent are present, the XML overrules the annotation. This makes it really convenient to start with an annotation for the default case, but override it later via XML for a specific use case.
+The current preference in Java EE seems to be more towards (simple) annotations combined with a large amount of convention over configuration.
+
+
+EJB's are more advantageous because of standardization. If you are working with a lightweight application I think going with Spring is fine but if you expect that your application will be big and will require lots of memory access and data connections access you may consider starting your development with EJBs. The main reason being clustering and load balancing are built into the EJB framework.
+In an EJB environment, when an EAR ('E'nterprise 'AR'chive) is deployed, it may be deployed with multiple EJBs beans that each could have a specific purpose. Let say you wrote a bean for user management and another bean for product management. Maybe one day you find that your user services way exceed your products access services, and you want to move your user bean to a different server on a different machine. This can actually be done in runtime without altering your code. Beans can be moved between servers and databases, to accomodate clustering and load/data balancing without affecting your developers or your users because most of it can be configured at the deployment level.
+Another reason for supporting a standard is knowing that most large third party vendors will likely support it resulting in less issues when integrating with new standard/service/technology - and let's face it, those come out like new flavours of ice-cream. And if it is in a public specification new start-up companies or kind developers can create an open-source version.
+http://www.onjava.com/pub/a/onjava/2005/06/29/spring-ejb3.html
+It is most unfortunate that even the most intelligent designers or programmers cannot predict which of their features may or may not be embraced by the development community which is the main reason software becomes bloated... Java EE is definitely that!
+
+
+1) What is EJB? 
+2) Benefits of EJB.
+3)EJB Types : Session and Message driven in brief. 
+4) Types of Session bean.
+5) Local Or Remote
+6) Life cycle of a stateless session bean. (Demonstrate with code)
+7) Life Cycle of a stateful session bean. (Demonstrate with code) 
+

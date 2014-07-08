@@ -1,6 +1,5 @@
 package net.therap.controller;
 
-import net.therap.dao.UserDao;
 import net.therap.domain.User;
 import net.therap.service.UserService;
 
@@ -9,15 +8,16 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import java.sql.Date;
 
 /**
  * @author rifatul.islam
  * @since 7/3/14.
  */
 
-@ManagedBean(name = "authController")
+@ManagedBean(name = "userController")
 @SessionScoped
-public class UserAuthController {
+public class UserController {
 
     private User user;
 
@@ -39,6 +39,11 @@ public class UserAuthController {
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "login.xhtml?faces-redirect=true";
+    }
+
+    public String addNewUser() {
+        userService.addUser(user);
         return "login.xhtml?faces-redirect=true";
     }
 
