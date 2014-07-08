@@ -42,7 +42,6 @@ public class CounterServiceImpl implements CounterService {
     @Override
     public void setCounter(int counter) {
         this.counter = counter;
-//        log.info("Counter Incremented. Counter = " + counter);
     }
 
     @Override

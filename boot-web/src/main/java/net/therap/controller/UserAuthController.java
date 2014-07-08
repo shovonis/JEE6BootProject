@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
  * @since 7/3/14.
  */
 
-@ManagedBean(name = "loginController")
+@ManagedBean(name = "authController")
 @SessionScoped
 public class UserAuthController {
 
@@ -29,7 +29,7 @@ public class UserAuthController {
         user = new User();
     }
 
-    public String loginCheck() {
+    public String login() {
         user = userService.getUser(user.getUserName(), user.getPassword());
         if (user == null) {
             return "login.xhtml?faces-redirect=true";
