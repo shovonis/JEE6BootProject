@@ -11,11 +11,9 @@ import java.util.Date;
  * @since 7/3/14.
  */
 
-@ManagedBean(name = "helloBean")
+@ManagedBean(name = "homeController")
 @RequestScoped
-public class HelloBean implements Serializable {
-    private String message = "Hello JSF This message is from Bean";
-
+public class HomeController implements Serializable {
 
     @ManagedProperty(value = "#{param.pageId}")
     private String pageId;
@@ -23,10 +21,6 @@ public class HelloBean implements Serializable {
     private Date date;
 
     private String text;
-
-    public String getMessage() {
-        return message;
-    }
 
     public String sendHomeLink() {
         return "home.xhtml?faces-redirect=true";
@@ -41,7 +35,6 @@ public class HelloBean implements Serializable {
         }
         return "home";
     }
-
 
     public void setPageId(String pageId) {
         this.pageId = pageId;

@@ -8,9 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.ejb.EJB;
-import javax.ejb.Local;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 import java.util.List;
 
 /**
@@ -18,7 +16,7 @@ import java.util.List;
  * @since 7/7/14.
  */
 @Stateless(name = "UserServiceEJB")
-@Local(UserService.class)
+@TransactionManagement(value = TransactionManagementType.CONTAINER)
 public class UserServiceImpl implements UserService {
     private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -26,7 +24,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @PostConstruct
-    public void setUp() {
+    public void initialize() {
         log.info("UserServiceImpl PostConstruct Invoked");
     }
 
@@ -50,7 +48,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @PreDestroy
-    public void tearDown() {
+    public void destroy() {
         log.info("UserServiceImpl PreDestroy Invoked");
     }
 }

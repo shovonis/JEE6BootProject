@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  * @author rifatul.islam
@@ -16,7 +17,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name = "loginController")
 @SessionScoped
-public class LoginController {
+public class UserAuthController {
 
     private User user;
 
@@ -36,6 +37,11 @@ public class LoginController {
         return "home.xhtml?faces-redirect=true";
     }
 
+    public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "login.xhtml?faces-redirect=true";
+    }
+
     public User getUser() {
         return user;
     }
@@ -47,4 +53,6 @@ public class LoginController {
     public boolean isUserLoggedIn() {
         return user != null;
     }
+
+
 }
