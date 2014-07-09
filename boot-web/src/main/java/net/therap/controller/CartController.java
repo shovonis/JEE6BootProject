@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 
 /**
@@ -18,22 +18,28 @@ import java.util.ArrayList;
  */
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class CartController {
+
     private static final Logger log = LoggerFactory.getLogger(CartController.class);
+
     private ArrayList<Product> products;
     private ArrayList<Product> cartList;
     private Product product;
+
+    private Product cartProduct;
+
 
     @EJB
     private Cart cart;
 
     @PostConstruct
     public void initialize() {
+        log.info("Cart Initialized");
         products = new ArrayList<Product>();
+        cartList = new ArrayList<Product>();
         Product shirt = new Product();
         shirt.setName("Shirt");
-
 
         Product shoe = new Product();
         shoe.setName("Shoe");
@@ -61,12 +67,19 @@ public class CartController {
 
     public void addProductToCart() {
         log.info("Product Added To cart" + getProduct().getName());
-       // cart.setCart(getProduct());
+        cart.setCart(cartProduct);
     }
 
     public ArrayList<Product> getCartList() {
-        cartList = cart.getCart();
-        return cartList;
+        return cart.getCart();
+    }
+
+    public Product getCartProduct() {
+        return cartProduct;
+    }
+
+    public void setCartProduct(Product cartProduct) {
+        this.cartProduct = cartProduct;
     }
 
     @PreDestroy

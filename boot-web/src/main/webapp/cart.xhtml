@@ -26,7 +26,11 @@
     </h:form>
 
     <h:form>
-        <h:commandLink action="#{cartController.addProductToCart}" value="Test"/>
+
+        <p:selectOneListbox id="cart" value="#{cartController.cartProduct}">
+            <f:selectItems value="#{cartController.cartList}" var="cartProduct" itemLabel="#{cartProduct.name}"
+                           itemValue="#{cartProduct.name}"/>
+        </p:selectOneListbox>
     </h:form>
 
 </h:body>
