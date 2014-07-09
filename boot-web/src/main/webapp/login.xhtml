@@ -4,13 +4,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:body>
     <ui:composition template="WEB-INF/template/template.xhtml">
         <ui:define name="content">
             <legend>Login Form</legend>
-            <h:form styleClass="basic-grey">
+
+            <p:separator/>
+
+            <h:form>
 
                 <h:outputLabel for="userName">User Name:</h:outputLabel>
                 <h:message style="text-decoration-color: red" for="userName" styleClass="error-message"/>
@@ -26,10 +30,11 @@
                     <h:inputSecret id="password" value="#{userController.user.password}" required="true"/>
                     <span style="text-decoration-color: red" class="reruired">*</span>
                 </h:panelGroup>
-                <br/>
-                <h:commandButton styleClass="button" action="#{userController.login}" value="Login"/>
 
-                <li><h:link value="Register" outcome="register.xhtml?faces-redirect=true"/></li>
+                <h:commandButton styleClass="button" action="#{userController.login}" value="Login"/>
+                <br/>
+                <h:outputLabel value="New User ? Please " /> <h:link value="Register" outcome="register.xhtml?faces-redirect=true"/>
+
             </h:form>
         </ui:define>
     </ui:composition>

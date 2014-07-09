@@ -51,4 +51,9 @@ public class UserServiceImpl implements UserService {
     public void destroy() {
         log.info("UserServiceImpl PreDestroy Invoked");
     }
+
+    @Schedule(hour = "*", minute = "*")
+    public void logTimer() {
+        log.info(" log timer Method from invoked at every minute");
+    }
 }

@@ -1,5 +1,6 @@
 package net.therap.service.impl;
 
+import net.therap.interceptors.SimpleProfiler;
 import net.therap.service.CounterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.*;
+import javax.interceptor.Interceptors;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 
 @Stateful(name = "CounterEJB")
-@StatefulTimeout(unit = TimeUnit.SECONDS, value = 20)
+@StatefulTimeout(unit = TimeUnit.MINUTES, value = 20)
 public class CounterServiceImpl implements CounterService {
     private static final Logger log = LoggerFactory.getLogger(CounterServiceImpl.class);
 
@@ -44,6 +46,7 @@ public class CounterServiceImpl implements CounterService {
     }
 
     @Override
+    @Interceptors(SimpleProfiler.class)
     public void incrementCounter() {
         counter++;
         log.info("Counter Incremented. Counter = " + counter);
@@ -76,4 +79,6 @@ public class CounterServiceImpl implements CounterService {
         tmpCounter = 0;
         log.info("Counter is destroyed.Counter = " + counter);
     }
+
+
 }

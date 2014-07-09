@@ -4,7 +4,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
@@ -13,20 +12,28 @@
 <h:body>
     <ui:composition template="WEB-INF/template/template.xhtml">
         <ui:define name="content">
-            <h:outputLabel value="this is home"/>
             <h:form>
-                <h:commandLink action="#{homeController.showPage}" value="Index">
-                    <f:param name="pageId" value="1"/>
-                </h:commandLink>
-                <p:calendar id="date" value="#{homeController.date}" showOn="button"/>
 
-                <h:commandButton value="Logout" action="#{userController.logout}"/>
-
+                <h2><p:outputLabel value="StateLess Session Bean"/></h2>
                 <h:outputLabel value="Counter Value : "/>
                 <h:inputText value="#{counterController.counterValue}"/> <br/>
                 <h:commandButton value="Increment" action="#{counterController.incrementCounter}"/>
+
                 <h:commandButton value="Remove Counter" action="#{counterController.removeCounter}"/>
 
+                <p:separator/>
+
+                <h2><p:outputLabel value="Singleton Session Bean"/></h2>
+                <h:outputLabel value="Global Counter Value : "/>
+                <h:inputText value="#{singletonCounterController.counterValue}"/> <br/>
+                <h:commandButton value="Increament" action="#{singletonCounterController.incrementCounter}"/>
+
+                <br/>
+                <br/>
+
+                <h:commandButton value="Logout" action="#{userController.logout}"/>
+
+                <!--<h:link value="Cart" outcome="cart.xhtml?faces-redirect=true"/>-->
             </h:form>
         </ui:define>
 

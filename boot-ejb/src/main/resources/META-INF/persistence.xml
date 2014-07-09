@@ -11,6 +11,7 @@
         <jta-data-source>jdbc/mydb</jta-data-source>
 
         <class>net.therap.domain.User</class>
+        <class>net.therap.domain.Product</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
