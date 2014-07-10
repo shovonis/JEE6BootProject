@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.*;
 import java.util.List;
+import java.util.concurrent.Future;
 
 /**
  * @author rifatul.islam
@@ -55,5 +56,15 @@ public class UserServiceImpl implements UserService {
     @Schedule(hour = "*", minute = "*")
     public void logTimer() {
         log.info(" log timer Method from invoked at every minute");
+    }
+
+    @Asynchronous
+    public Future<String> getAsyncMessage() {
+        try {
+            Thread.sleep(50000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return new AsyncResult<String>("Hello Message");
     }
 }

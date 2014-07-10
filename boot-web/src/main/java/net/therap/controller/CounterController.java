@@ -1,13 +1,13 @@
 package net.therap.controller;
 
 import net.therap.service.CounterService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.therap.service.UserService;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 /**
  * @author rifatul.islam
@@ -17,9 +17,13 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "counterController")
 @SessionScoped
 public class CounterController {
-
     @EJB
     private CounterService counterService;
+
+    @EJB
+    private UserService userService;
+
+    private String asyncString;
 
     private int counterValue;
 
@@ -38,6 +42,31 @@ public class CounterController {
 
     public void setCounterValue(int counter) {
         this.counterValue = counter;
+    }
+
+
+    public String asyncMessage() {
+        Future<String> result = userService.getAsyncMessage();
+        if (result.isDone()) {
+            try {
+                this.setAsyncString(result.get());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        } else {
+            this.setAsyncString("Processing...");
+        }
+        return "cart.xhtml?faces-redirect=true";
+    }
+
+    public String getAsyncString() {
+        return asyncString;
+    }
+
+    public void setAsyncString(String asyncString) {
+        this.asyncString = asyncString;
     }
 
 }

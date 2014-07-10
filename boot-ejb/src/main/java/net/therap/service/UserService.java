@@ -4,6 +4,7 @@ import net.therap.domain.User;
 
 import javax.ejb.Local;
 import java.util.List;
+import java.util.concurrent.Future;
 
 /**
  * @author rifatul.islam
@@ -17,4 +18,6 @@ public interface UserService {
     public List<User> getAllUser();
 
     public void addUser(User user);
+
+    public Future<String> getAsyncMessage();
 }

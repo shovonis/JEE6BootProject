@@ -65,9 +65,10 @@ public class CartController {
         this.product = product;
     }
 
-    public void addProductToCart() {
+    public String addProductToCart() {
         log.info("Product Added To cart" + getProduct().getName());
         cart.setCart(cartProduct);
+        return "home.xhtml?faces-redirect=true";
     }
 
     public ArrayList<Product> getCartList() {

@@ -33,8 +33,9 @@ public class UserController {
         user = userService.getUser(user.getUserName(), user.getPassword());
         if (user == null) {
             return "login.xhtml?faces-redirect=true";
+        }else{
+            return "home.xhtml?faces-redirect=true";
         }
-        return "home.xhtml?faces-redirect=true";
     }
 
     public String logout() {
@@ -58,6 +59,4 @@ public class UserController {
     public boolean isUserLoggedIn() {
         return user != null;
     }
-
-
 }

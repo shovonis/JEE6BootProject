@@ -4,34 +4,37 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-        >
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
 <h:head>
 </h:head>
 <h:body>
-    <h1>Add Item To cart</h1>
-    <p:separator/>
-    <h:form>
-        <h:panelGrid>
+    <ui:composition template="WEB-INF/template/template.xhtml">
+        <ui:define name="content">
+            <h1>Add Item To cart</h1>
+            <p:separator/>
+            <h:form>
+                <h:panelGrid>
 
-            <p:selectOneListbox id="item" value="#{cartController.product}">
-                <f:selectItems value="#{cartController.products}" var="product" itemLabel="#{product.name}"
-                               itemValue="#{product.name}"/>
-            </p:selectOneListbox>
-        </h:panelGrid>
+                    <p:selectOneListbox id="item" value="#{cartController.product}">
+                        <f:selectItems value="#{cartController.products}" var="product" itemLabel="#{product.name}"
+                                       itemValue="#{product.name}"/>
+                    </p:selectOneListbox>
+                </h:panelGrid>
 
-        <h:commandButton type="submit" value="Add" action="#{cartController.addProductToCart}"/>
+                <h:commandButton type="submit" value="Add" action="#{cartController.addProductToCart()}"/>
 
-    </h:form>
+            </h:form>
 
-    <h:form>
-
-        <p:selectOneListbox id="cart" value="#{cartController.cartProduct}">
-            <f:selectItems value="#{cartController.cartList}" var="cartProduct" itemLabel="#{cartProduct.name}"
-                           itemValue="#{cartProduct.name}"/>
-        </p:selectOneListbox>
-    </h:form>
-
+            <h:form>
+                <p:selectOneListbox id="cart" value="#{cartController.cartProduct}">
+                    <f:selectItems value="#{cartController.cartList}" var="cartProduct" itemLabel="#{cartProduct.name}"
+                                   itemValue="#{cartProduct.name}"/>
+                </p:selectOneListbox>
+            </h:form>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

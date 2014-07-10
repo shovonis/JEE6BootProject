@@ -1,12 +1,9 @@
 package net.therap.controller;
 
-import net.therap.domain.Product;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -20,9 +17,7 @@ public class HomeController implements Serializable {
 
     @ManagedProperty(value = "#{param.pageId}")
     private String pageId;
-
     private Date date;
-
     private String text;
 
     public String sendHomeLink() {
