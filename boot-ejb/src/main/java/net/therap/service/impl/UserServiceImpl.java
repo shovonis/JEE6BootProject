@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 
     @Schedule(hour = "*", minute = "*")
     public void logTimer() {
-        log.info(" log timer Method from invoked at every minute");
+        log.info(" Timer Method invoked at every minute");
     }
 
     @Asynchronous
